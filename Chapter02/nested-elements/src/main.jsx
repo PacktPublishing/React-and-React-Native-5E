@@ -1,4 +1,4 @@
-import * as ReactDOM from "react-dom";
+import * as ReactDOM from "react-dom/client";
 
 import MySection from "./MySection";
 import MyButton from "./MyButton";

@@ -1,4 +1,4 @@
-import * as ReactDOM from "react-dom";
+import * as ReactDOM from "react-dom/client";
 import MyComponent from "./MyComponent";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

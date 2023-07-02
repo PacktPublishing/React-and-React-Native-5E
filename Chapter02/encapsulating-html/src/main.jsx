@@ -1,4 +1,4 @@
-import * as ReactDOM from "react-dom";
+import * as ReactDOM from "react-dom/client";
 
 function MyComponent() {
   return (

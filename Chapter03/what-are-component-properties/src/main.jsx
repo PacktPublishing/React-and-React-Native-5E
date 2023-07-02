@@ -1,13 +1,13 @@
 import * as ReactDOM from "react-dom/client";
-
-const handleClick = () => {
-  console.log("Button clicked!");
-};
+import MyComponent from "./MyComponent";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <section>
-    <button onClick={handleClick}>Click me</button>
+    <MyComponent
+      title="Welcome to My App"
+      description="This is a sample component."
+    />
   </section>
 );

@@ -3,7 +3,7 @@ import { Text, View } from "react-native";
 import * as Location from "expo-location";
 import styles from "./styles";
 
-const API_KEY = "AIzaSyAKNPuqQ8vk4WJhhHtH0px3TIfNET5y1zo";
+const API_KEY = "";
 const URL = `https://maps.google.com/maps/api/geocode/json?key=${API_KEY}&latlng=`;
 
 export default function WhereAmI() {

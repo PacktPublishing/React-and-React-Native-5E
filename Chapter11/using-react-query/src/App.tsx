@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import UserInfo from "./UserInfo";
 
-const userFetcher = () =>
-  fetch("https://api.github.com/users/sakhnyuk").then((response) =>
+const userFetcher = (username: string) =>
+  fetch(`https://api.github.com/users/${username}`).then((response) =>
     response.json()
   );
 
@@ -11,7 +11,10 @@ function App() {
     data: user,
     isPending,
     isError,
-  } = useQuery({ queryKey: ["githubUser"], queryFn: userFetcher });
+  } = useQuery({
+    queryKey: ["githubUser"],
+    queryFn: () => userFetcher("sakhnyuk"),
+  });
 
   return (
     <div>

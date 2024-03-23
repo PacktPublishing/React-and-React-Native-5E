@@ -2,8 +2,8 @@ import UserInfo from "./UserInfo";
 import { gql, useQuery } from "@apollo/client";
 
 const GET_GITHUB_USER = gql`
-  query {
-    user(login: "sakhnyuk") {
+  query GetGithubUser($username: String!) {
+    user(login: $username) {
       login
       id
       avatarUrl
@@ -16,7 +16,9 @@ const GET_GITHUB_USER = gql`
 `;
 
 function App() {
-  const { data, loading, error } = useQuery(GET_GITHUB_USER);
+  const { data, loading, error } = useQuery(GET_GITHUB_USER, {
+    variables: { username: "sakhnyuk" },
+  });
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error fetching data</p>;

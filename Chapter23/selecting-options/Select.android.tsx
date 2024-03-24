@@ -8,7 +8,7 @@ export default function Select(props: SelectProps) {
   return (
     <View>
       <Text style={styles.pickerLabel}>{props.label}</Text>
-      <Picker {...props}>
+      <Picker style={styles.picker} {...props}>
         {props.items.map((i) => (
           <Picker.Item key={i.label} {...i} />
         ))}

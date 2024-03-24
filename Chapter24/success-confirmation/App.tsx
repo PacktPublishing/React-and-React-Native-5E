@@ -1,19 +1,21 @@
 import React, { useState } from "react";
-import { View, Text } from "react-native";
+import { View, Text, Alert } from "react-native";
 import ConfirmationModal from "./ConfirmationModal";
-import ConfirmationAlert from "./ConfirmationAlert";
+
 import styles from "./styles";
 
 export default function App() {
   const [modalVisible, setModalVisible] = useState(false);
-  const [alertVisible, setAlertVisible] = useState(false);
 
   function toggleModal() {
     setModalVisible(!modalVisible);
   }
 
   function toggleAlert() {
-    setAlertVisible(!alertVisible);
+    Alert.alert("Are you sure?", "For real?", [
+      { text: "Nope", onPress: () => {} },
+      { text: "Yep", onPress: () => {} },
+    ]);
   }
 
   return (
@@ -23,15 +25,6 @@ export default function App() {
         visible={modalVisible}
         onPressConfirm={toggleModal}
         onPressCancel={toggleModal}
-      />
-      <ConfirmationAlert
-        title="Are you sure?"
-        message="For real?"
-        visible={alertVisible}
-        buttons={[
-          { text: "Nope", onPress: toggleAlert },
-          { text: "Yep", onPress: toggleAlert },
-        ]}
       />
       <Text style={styles.text} onPress={toggleModal}>
         Show Confirmation Modal

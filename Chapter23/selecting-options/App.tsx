@@ -25,7 +25,6 @@ export default function SelectingOptions() {
   );
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [selectedGarment, setSelectedGarment] = useState<number | null>(null);
-  const [selection, setSelection] = useState("");
 
   return (
     <View style={styles.container}>
@@ -48,15 +47,16 @@ export default function SelectingOptions() {
           selectedValue={selectedGarment}
           onValueChange={(garment: number) => {
             setSelectedGarment(garment);
-            setSelection(
-              `${selectedSize} ${
-                garments.find((i) => i.value === garment)?.label
-              }`
-            );
           }}
         />
       </View>
-      <Text style={styles.selection}>{selection}</Text>
+      <Text style={styles.selection}>
+        {selectedSize &&
+          selectedGarment &&
+          `${selectedSize} ${
+            garments.find((i) => i.value === selectedGarment)?.label
+          }`}
+      </Text>
     </View>
   );
 }

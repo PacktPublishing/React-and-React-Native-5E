@@ -1,30 +1,23 @@
-import React, { useState } from "react";
+import React from "react";
 import { Text, View } from "react-native";
-import Notification from "./Notification";
+import { RootSiblingParent } from "react-native-root-siblings";
 import styles from "./styles";
+import Toast from "react-native-root-toast";
 
 export default function PassiveNotifications() {
-  const [count, setCount] = useState(0);
-  const [message, setMessage] = useState<string | null>(null);
-
   return (
-    <View style={styles.container}>
-      <Notification message={message} />
-      <Text
-        onPress={() => {
-          setCount(count + 1);
-          setMessage(null);
-        }}
-      >
-        Pressed {count}
-      </Text>
-      <Text
-        onPress={() => {
-          setMessage("Something happened!");
-        }}
-      >
-        Show Notification
-      </Text>
-    </View>
+    <RootSiblingParent>
+      <View style={styles.container}>
+        <Text
+          onPress={() => {
+            Toast.show("Something happened!", {
+              duration: Toast.durations.LONG,
+            });
+          }}
+        >
+          Show Notification
+        </Text>
+      </View>
+    </RootSiblingParent>
   );
 }

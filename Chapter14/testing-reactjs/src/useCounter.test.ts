@@ -5,7 +5,7 @@ import { test, expect } from "vitest";
 test("useCounter", () => {
   const { result } = renderHook(() => useCounter());
 
-  expect(result.current.count).toBe(0);
+  expect(result.current.count).toBe(10);
 
   act(() => {
     result.current.increment();

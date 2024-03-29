@@ -3,37 +3,37 @@ import {
   View,
   ScrollView,
   Text,
-  TouchableOpacity,
   NativeSyntheticEvent,
   NativeScrollEvent,
 } from "react-native";
 import styles from "./styles";
 
 type SwipeableProps = {
-  onSwipe: () => void;
   name: string;
+  width: number;
+  onSwipe: () => void;
 };
 
-export default function Swipeable({ onSwipe, name }: SwipeableProps) {
+export default function Swipeable({ name, width, onSwipe }: SwipeableProps) {
   function onScroll(e: NativeSyntheticEvent<NativeScrollEvent>) {
-    e.nativeEvent.contentOffset.x === 200 && onSwipe();
+    console.log(e.nativeEvent.contentOffset.x);
+    e.nativeEvent.contentOffset.x >= width && onSwipe();
   }
 
   return (
     <View style={styles.swipeContainer}>
       <ScrollView
         horizontal
-        pagingEnabled
+        snapToInterval={width}
         showsHorizontalScrollIndicator={false}
         scrollEventThrottle={10}
         onScroll={onScroll}
       >
-        <TouchableOpacity>
-          <View style={styles.swipeItem}>
-            <Text style={styles.swipeItemText}>{name}</Text>
-          </View>
-        </TouchableOpacity>
-        <View style={styles.swipeBlank} />
+        <View style={[styles.swipeItem, { width }]}>
+          <Text style={styles.swipeItemText}>{name}</Text>
+        </View>
+
+        <View style={[styles.swipeBlank, { width }]} />
       </ScrollView>
     </View>
   );

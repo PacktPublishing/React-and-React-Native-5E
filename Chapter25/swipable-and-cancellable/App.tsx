@@ -17,7 +17,12 @@ export default function SwipableAndCancellable() {
   return (
     <View style={styles.container}>
       {items.map((item) => (
-        <Swipeable key={item.id} onSwipe={onSwipe(item.id)} name={item.name} />
+        <Swipeable
+          key={item.id}
+          onSwipe={onSwipe(item.id)}
+          name={item.name}
+          width={200}
+        />
       ))}
     </View>
   );

@@ -17,7 +17,6 @@ export default StyleSheet.create({
   },
 
   swipeItem: {
-    width: 200,
     height: 30,
     backgroundColor: "azure",
     justifyContent: "center",
@@ -32,7 +31,6 @@ export default StyleSheet.create({
   },
 
   swipeBlank: {
-    width: 200,
     height: 30,
   },
 });

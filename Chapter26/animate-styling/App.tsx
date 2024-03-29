@@ -3,6 +3,7 @@ import { Text, View, Pressable } from "react-native";
 import Animated, {
   interpolateColor,
   useAnimatedStyle,
+  useDerivedValue,
   useSharedValue,
   withSpring,
 } from "react-native-reanimated";
@@ -14,18 +15,16 @@ const App = () => {
   const scale = useSharedValue(1);
   const color = useSharedValue(0);
 
-  const animatedStyles = useAnimatedStyle(() => {
-    const backgroundColor = interpolateColor(
-      color.value,
-      [0, 1],
-      ["orange", "red"]
-    );
+  const backgroundColor = useDerivedValue(() => {
+    return interpolateColor(color.value, [0, 1], ["orange", "red"]);
+  });
 
+  const animatedStyles = useAnimatedStyle(() => {
     return {
       opacity: opacity.value,
       borderRadius: radius.value,
       transform: [{ scale: scale.value }],
-      backgroundColor: backgroundColor,
+      backgroundColor: backgroundColor.value,
     };
   }, []);
 

@@ -34,19 +34,17 @@ export function get(key?: Key): Promise<boolean | typeof fakeNetworkData> {
     if (connected) {
       resolve(key ? fakeNetworkData[key] : fakeNetworkData);
     } else if (key) {
-      AsyncStorage.getItem(key).then(
-        (item) => resolve(item === "true"),
-        (err) => reject(err)
-      );
+      AsyncStorage.getItem(key)
+        .then((item) => resolve(item === "true"))
+        .catch((err) => reject(err));
     } else {
-      AsyncStorage.getAllKeys().then(
-        (keys) =>
-          AsyncStorage.multiGet(keys).then(
-            (items) => resolve(Object.fromEntries(items) as any),
-            (err) => reject(err)
-          ),
-        (err) => reject(err)
-      );
+      AsyncStorage.getAllKeys()
+        .then((keys) =>
+          AsyncStorage.multiGet(keys).then((items) =>
+            resolve(Object.fromEntries(items) as any)
+          )
+        )
+        .catch((err) => reject(err));
     }
   });
 }

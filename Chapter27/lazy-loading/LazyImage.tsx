@@ -34,8 +34,7 @@ export default function LazyImage({ style, resizeMode, source }: Props) {
 
   return (
     <View style={style}>
-      <Placeholder loaded={loaded} style={style} />
-      {source && (
+      {!!source ? (
         <Image
           source={source}
           resizeMode={resizeMode}
@@ -44,6 +43,8 @@ export default function LazyImage({ style, resizeMode, source }: Props) {
             setLoaded(true);
           }}
         />
+      ) : (
+        <Placeholder loaded={loaded} style={style} />
       )}
     </View>
   );

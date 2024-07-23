@@ -1,5 +1,5 @@
-function First() {
+function Second() {
   return <h1>Second</h1>;
 }
 
-export default First;
+export default Second;

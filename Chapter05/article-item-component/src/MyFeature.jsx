@@ -1,6 +1,5 @@
 import * as React from "react";
 import ArticleList from "./ArticleList";
-import AddArticle from "./AddArticle";
 
 const id = (function* () {
   let i = 1;
@@ -56,14 +55,16 @@ function MyFeature() {
 
   return (
     <section>
-      <AddArticle
-        name="Articles"
-        title={title}
-        summary={summary}
-        onChangeTitle={onChangeTitle}
-        onChangeSummary={onChangeSummary}
-        onClickAdd={onClickAdd}
-      />
+      <header>
+        <h1>Articles</h1>
+        <input placeholder="Title" value={title} onChange={onChangeTitle} />
+        <input
+          placeholder="Summary"
+          value={summary}
+          onChange={onChangeSummary}
+        />
+        <button onClick={onClickAdd}>Add</button>
+      </header>
       <ArticleList articles={articles} onClickRemove={onClickRemove} />
     </section>
   );
